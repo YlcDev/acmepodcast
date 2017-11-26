@@ -1,0 +1,37 @@
+version: '2'
+services:
+  server:
+    image: shippingdocker/nginx:latest
+    ports:
+     - "80:80"
+    volumes:
+     - ./application:/var/www/html
+    networks:
+     - acmepodcast
+  fpm:
+    build: build/
+    volumes:
+     - ./application:/var/www/html
+    networks:
+     - acmepodcast
+  cache:
+    image: redis:alpine
+    networks:
+     - acmepodcast
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: acmepodcast
+      MYSQL_USER: acmepodcast
+      MYSQL_PASSWORD: secret
+    volumes:
+     - data:/var/lib/mysql
+    networks:
+     - acmepodcast
+networks:
+  acmepodcast:
+    driver: "bridge"
+volumes:
+  data:
+    driver: "local"
