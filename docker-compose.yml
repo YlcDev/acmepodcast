@@ -1,17 +1,17 @@
 version: '2'
 services:
   server:
-    image: shippingdocker/nginx:latest
+    build: build/nginx
     ports:
-     - "80:80"
+     - "3030:80"
     volumes:
-     - ./application:/var/www/html
+     - ./app:/var/www/html
     networks:
      - acmepodcast
   fpm:
-    build: build/
+    build: build/fpm
     volumes:
-     - ./application:/var/www/html
+     - ./app:/var/www/html
     networks:
      - acmepodcast
   cache:
@@ -26,7 +26,7 @@ services:
       MYSQL_USER: acmepodcast
       MYSQL_PASSWORD: secret
     volumes:
-     - data:/var/lib/mysql
+     - ./database:/var/lib/mysql
     networks:
      - acmepodcast
 networks:
