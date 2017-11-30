@@ -86,7 +86,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "3.3",
-            "ref": "86e20b58b43cc8c776bbb99c5c013bd8a9a551eb"
+            "ref": "9da649b58674bc64e5bcc746c27028a2aa1246f1"
         }
     },
     "symfony/yaml": {
