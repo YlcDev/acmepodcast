@@ -14,10 +14,6 @@ services:
      - ./app:/var/www/html
     networks:
      - acmepodcast
-  cache:
-    image: redis:alpine
-    networks:
-     - acmepodcast
   db:
     image: mysql:5.7
     environment:

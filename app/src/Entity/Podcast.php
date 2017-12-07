@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PodcastRepository")
@@ -17,17 +18,23 @@ class Podcast
      */
     private $id;
 
-    /**
+    /**     *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string")
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string")
      */
     private $description;
 
-    /**
+    /**     *
+     * @Assert\Url()
+     *
      * @ORM\Column(type="string")
      */
     private $link;

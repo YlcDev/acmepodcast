@@ -205,5 +205,35 @@
             "version": "1.0",
             "ref": "9954e3835ce82fee2682be8501ce0511bb867812"
         }
+    },
+    "symfony/inflector": {
+        "version": "v4.0.1"
+    },
+    "symfony/property-access": {
+        "version": "v4.0.1"
+    },
+    "symfony/options-resolver": {
+        "version": "v4.0.1"
+    },
+    "symfony/intl": {
+        "version": "v4.0.1"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.6.0"
+    },
+    "symfony/form": {
+        "version": "v4.0.1"
+    },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "124be9a2b7cc035fd8c56f4fd2e19c907c1f3fb8"
+        }
+    },
+    "symfony/validator": {
+        "version": "v4.0.1"
     }
 }

@@ -2,19 +2,34 @@
 
 namespace App\Controller;
 
+use App\Form\PodcastType;
+use App\Repository\PodcastRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PodcastController extends Controller
 {
     /**
      * @Route("/admin/podcast", name="podcast")
+     *
+     * @Method({"POST", "GET"})
      */
-    public function index()
+    public function index(Request $request, PodcastRepository  $repository)
     {
-        // replace this line with your own code!
-        return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
+        $podcast = $repository->find(1);
+
+        $form = $this->createForm(PodcastType::class, $podcast);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->$repository->update($podcast);
+        }
+
+        return $this->render('admin/podcast/main.html.twig', ['form' => $form->createView()]);
     }
 }

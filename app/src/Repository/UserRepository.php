@@ -41,7 +41,7 @@ class UserRepository extends ServiceEntityRepository
 
     public function update(User $entity)
     {
-        $entity = $this->_em->merge($entity); //it's important to use result of function, not the same element
+        $entity = $this->_em->merge($entity);
 
         $this->_em->persist($entity);
 

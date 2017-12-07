@@ -13,16 +13,12 @@ class PodcastRepository extends ServiceEntityRepository
         parent::__construct($registry, Podcast::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function update(Podcast $entity)
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $entity = $this->_em->merge($entity);
+
+        $this->_em->persist($entity);
+
+        $this->_em->flush();
     }
-    */
 }
