@@ -14,7 +14,7 @@ class Version20171203012343 extends AbstractMigration
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('INSERT INTO podcast (title, description, link, language) VALUES("acmepodcast", "your acmepodcast description", "your hyperlink here", "en")');
+        $this->addSql('INSERT INTO podcast (title, description, link, language) VALUES("acmepodcast", "your acmepodcast description", "http://some-link.com", "en")');
     }
 
     public function down(Schema $schema)
