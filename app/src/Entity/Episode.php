@@ -52,6 +52,8 @@ class Episode
      *    dnsMessage = "The host '{{ value }}' could not be resolved."
      * )
      *
+     * @App\Validation\CorrectFormat
+     *
      * @ORM\Column(type="string")
      */
     private $mediaFileUrl;
