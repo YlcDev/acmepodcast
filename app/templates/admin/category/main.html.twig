@@ -2,7 +2,7 @@
 
 {% block body %}
     {% for category in categories %}
-        <li>{{  category.title }}</li>
+        <li>{{  category.title }} <a href="{{ path('category.create', {'categoryId': category.id}) }}">Edit</a></li>
     {% else %}
         <li><em>no categories exist. <a href="{{ path('category.create') }}">Click here</a> to add your first category :)</em></li>
     {% endfor %}

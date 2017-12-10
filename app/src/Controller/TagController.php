@@ -3,52 +3,54 @@
 namespace App\Controller;
 
 use App\Form\CategoryType;
+use App\Form\TagType;
 use App\Repository\CategoryRepository;
+use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class CategoryController extends AbstractController
+class TagController extends AbstractController
 {
     private $repository;
 
-    public function __construct(CategoryRepository $repository)
+    public function __construct(TagRepository $repository)
     {
         $this->repository = $repository;
     }
 
     /**
-     * @Route("/admin/category", name="category")
+     * @Route("/admin/tag", name="tag")
      *
      * @Method({"GET"})
      */
     public function index(Request $request)
     {
-        $categories = $this->repository->findAll();
+        $tags = $this->repository->findAll();
 
-        return $this->render('admin/category/main.html.twig', ['categories' => $categories ]);
+        return $this->render('admin/tag/main.html.twig', ['tags' => $tags ]);
     }
 
     /**
-     * @Route("/admin/category/create/{categoryId}", name="category.create")
+     * @Route("/admin/tag/create/{tagId}", name="tag.create")
      *
      * @Method({"POST", "GET"})
      */
-    public function create(Request $request, ?string $categoryId = null)
+    public function create(Request $request, ?string $tagId= null)
     {
-        $category = $this->repository->findOrCreate($categoryId);
+        $tag = $this->repository->findOrCreate($tagId);
 
-        $form = $this->createForm(CategoryType::class, $category);
+        $form = $this->createForm(TagType::class, $tag);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->repository->update($category);
+            $this->repository->update($tag);
         }
 
-        return $this->render('admin/category/create.html.twig', ['form' => $form->createView()]);
+        return $this->render('admin/tag/create.html.twig', ['form' => $form->createView()]);
 
 
     }

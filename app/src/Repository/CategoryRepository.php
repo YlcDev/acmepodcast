@@ -13,9 +13,22 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
-    public function findOrCreate(string $id)
+    public function findOrCreate(?string $id = null)
     {
-        //TODO; implement
+        if (is_null($id)) {
+            return new Category();
+        }
+
+        return $this->find($id);
+    }
+
+    public function update(Category $entity)
+    {
+        $entity = $this->_em->merge($entity);
+
+        $this->_em->persist($entity);
+
+        $this->_em->flush();
     }
 
 }
