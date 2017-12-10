@@ -31,7 +31,7 @@ class RssCreator
 
         $logger = new NullLogger();
 
-        return (new FeedIo($client, $logger))->format($feed, 'atom');
+        return (new FeedIo($client, $logger))->format($feed, 'rss');
     }
 
     private function produceFeed()
@@ -48,6 +48,8 @@ class RssCreator
     public function addItems(Feed $feed)
     {
         $episodes = $this->podcast->getEpisodes();
+
+//        var_dump(count($episodes)); die;
 
         foreach ($episodes as $episode) {
             $item = $feed->newItem();

@@ -24,6 +24,10 @@ class EpisodeRepository extends ServiceEntityRepository
 
     public function update(Episode $entity)
     {
+        $podcast = $this->_em->getReference('App\Entity\Podcast', 1);
+
+        $entity->setPodcast($podcast);
+
         $entity = $this->_em->merge($entity);
 
         $this->_em->persist($entity);
