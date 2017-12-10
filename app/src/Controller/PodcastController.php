@@ -27,7 +27,7 @@ class PodcastController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->$repository->update($podcast);
+            $repository->update($podcast);
         }
 
         return $this->render('admin/podcast/main.html.twig', ['form' => $form->createView()]);
