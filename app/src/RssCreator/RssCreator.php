@@ -19,7 +19,7 @@ class RssCreator
         $this->podcast = $podcastRepository->find(1);
     }
 
-    public function produce()
+    public function produce(string $fileExtension)
     {
         $feed = $this->produceFeed();
 
@@ -31,7 +31,7 @@ class RssCreator
 
         $logger = new NullLogger();
 
-        return (new FeedIo($client, $logger))->format($feed, 'rss');
+        return (new FeedIo($client, $logger))->format($feed, $fileExtension);
     }
 
     private function produceFeed()
@@ -49,8 +49,6 @@ class RssCreator
     {
         $episodes = $this->podcast->getEpisodes();
 
-//        var_dump(count($episodes)); die;
-
         foreach ($episodes as $episode) {
             $item = $feed->newItem();
 
@@ -59,7 +57,8 @@ class RssCreator
 
             $item->addMedia($media);
             $item->setTitle($episode->getTitle())
-                ->setDescription($episode->getDescription());
+                ->setDescription($episode->getDescription())
+            ;
 
             $feed->add($item);
         }
