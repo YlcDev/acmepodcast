@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -17,11 +19,29 @@ class Category
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 50,
+     *      minMessage = "The title must be at least {{ limit }} characters long",
+     *      maxMessage = "The title cannot be longer than {{ limit }} characters"
+     * )
+     *
      * @ORM\Column(type="string")
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
+     *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 200,
+     *      minMessage = "The description must be at least {{ limit }} characters long",
+     *      maxMessage = "The description cannot be longer than {{ limit }} characters"
+     * )
+     *
      * @ORM\Column(type="string")
      */
     private $description;

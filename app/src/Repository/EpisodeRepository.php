@@ -13,16 +13,21 @@ class EpisodeRepository extends ServiceEntityRepository
         parent::__construct($registry, Episode::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function findOrCreate(?string $id = null)
     {
-        return $this->createQueryBuilder('e')
-            ->where('e.something = :value')->setParameter('value', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        if (is_null($id)) {
+            return new Episode();
+        }
+
+        return $this->find($id);
     }
-    */
+
+    public function update(Episode $entity)
+    {
+        $entity = $this->_em->merge($entity);
+
+        $this->_em->persist($entity);
+
+        $this->_em->flush();
+    }
 }

@@ -2,6 +2,3 @@
 #    path: /
 #    defaults: { _controller: 'App\Controller\DefaultController::index' }
 #
-ping:
-    path: /api/ping
-    defaults: { _controller: 'App\Controller\PingController::index' }

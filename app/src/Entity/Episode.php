@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EpisodeRepository")
@@ -17,21 +19,46 @@ class Episode
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 50,
+     *      minMessage = "The title must be at least {{ limit }} characters long",
+     *      maxMessage = "The title cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string")
      */
     private $title;
 
-    /**
+    /**     *
+     * @Assert\NotBlank()
+     *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 200,
+     *      minMessage = "The description must be at least {{ limit }} characters long",
+     *      maxMessage = "The description cannot be longer than {{ limit }} characters"
+     * )
+     *
      * @ORM\Column(type="string")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank()
+     *
+     * @Assert\Url(
+     *    dnsMessage = "The host '{{ value }}' could not be resolved."
+     * )
+     *
      * @ORM\Column(type="string")
      */
     private $mediaFileUrl;
 
     /**
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string")
      */
     private $link;
@@ -158,5 +185,21 @@ class Episode
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMediaFileUrl()
+    {
+        return $this->mediaFileUrl;
+    }
+
+    /**
+     * @param mixed $mediaFileUrl
+     */
+    public function setMediaFileUrl($mediaFileUrl)
+    {
+        $this->mediaFileUrl = $mediaFileUrl;
     }
 }

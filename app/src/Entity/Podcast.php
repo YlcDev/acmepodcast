@@ -18,8 +18,15 @@ class Podcast
      */
     private $id;
 
-    /**     *
+    /**
      * @Assert\NotBlank()
+     *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 50,
+     *      minMessage = "The title must be at least {{ limit }} characters long",
+     *      maxMessage = "The title cannot be longer than {{ limit }} characters"
+     * )
      *
      * @ORM\Column(type="string")
      */
@@ -28,18 +35,29 @@ class Podcast
     /**
      * @Assert\NotBlank()
      *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 200,
+     *      minMessage = "The description must be at least {{ limit }} characters long",
+     *      maxMessage = "The description cannot be longer than {{ limit }} characters"
+     * )
+     *
      * @ORM\Column(type="string")
      */
     private $description;
 
-    /**     *
-     * @Assert\Url()
+    /**
+     * @Assert\Url(
+     *    dnsMessage = "The host '{{ value }}' could not be resolved."
+     * )
      *
      * @ORM\Column(type="string")
      */
     private $link;
 
     /**
+     * @Assert\Language()
+     *
      * @ORM\Column(type="string")
      */
     private $language;
