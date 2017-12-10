@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "94346a1c6d657d4466eb243a7852877f",
+    "content-hash": "26bfea00c520c6374ccc98a3409edaa1",
     "packages": [
+        {
+            "name": "debril/feed-io",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alexdebril/feed-io.git",
+                "reference": "64af60a8d796b4d512d7d0bed96d6c0920d17834"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alexdebril/feed-io/zipball/64af60a8d796b4d512d7d0bed96d6c0920d17834",
+                "reference": "64af60a8d796b4d512d7d0bed96d6c0920d17834",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.2",
+                "php": ">=7.1",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.4",
+                "monolog/monolog": "1.*",
+                "phpunit/phpunit": "~6.2.0"
+            },
+            "suggest": {
+                "monolog/monolog": "Allows to handle logs",
+                "symfony/console": "Allows to use the command line interface"
+            },
+            "bin": [
+                "bin/feedio"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FeedIo\\": "src/FeedIo"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandre Debril",
+                    "email": "alex.debril@gmail.com"
+                }
+            ],
+            "description": "PHP library built to consume and serve JSONFeed / RSS / Atom feeds",
+            "homepage": "https://feed-io.net",
+            "keywords": [
+                "atom",
+                "cli",
+                "client",
+                "feed",
+                "jsonfeed",
+                "news",
+                "rss"
+            ],
+            "time": "2017-10-04T12:42:55+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.5.0",

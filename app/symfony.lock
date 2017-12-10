@@ -247,5 +247,8 @@
     },
     "guzzlehttp/guzzle": {
         "version": "6.3.0"
+    },
+    "debril/feed-io": {
+        "version": "v4.0.0"
     }
 }
