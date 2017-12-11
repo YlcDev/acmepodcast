@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Form\CategoryType;
 use App\Form\TagType;
@@ -51,7 +51,5 @@ class TagController extends AbstractController
         }
 
         return $this->render('admin/tag/create.html.twig', ['form' => $form->createView()]);
-
-
     }
 }

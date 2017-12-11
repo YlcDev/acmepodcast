@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\RssCreator\RssCreator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,7 +22,6 @@ class RssController extends AbstractController
         }
 
         switch ($fileExtension) {
-
             case 'rss':
             case 'xml':
                 $contentType = 'application/rss+xml';

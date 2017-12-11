@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'site/partials/sidebar.html.twig' %}
+
+    {% for episode in episodes %}
+        <article>
+            <h3>{{ episode.title }}</h3>
+            <p>{{ episode.description }}</p>
+            <audio controls>
+                <source src="{{ episode.mediaFileUrl }}" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </article>
+        <hr />
+    {% else %}
+        <p>No episodes yet exist :(, please check back later</p>
+    {% endfor %}
+{% endblock %}

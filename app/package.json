@@ -9,5 +9,10 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production"
+    },
+    "dependencies": {
+        "node-sass": "^4.7.2",
+        "picnic": "^6.4.0",
+        "sass-loader": "^6.0.6"
     }
 }
