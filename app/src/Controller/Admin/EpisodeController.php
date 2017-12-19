@@ -23,7 +23,7 @@ class EpisodeController extends Controller
     }
 
     /**
-     * @Route("/admin/episode", name="episode")
+     * @Route("/admin/episodes", name="episode")
      *
      * @Method({"GET"})
      */
@@ -35,7 +35,7 @@ class EpisodeController extends Controller
     }
 
     /**
-     * @Route("/admin/episode/create/{episodeId}", name="episode.create")
+     * @Route("/admin/episodes/create/{episodeId}", name="episode.create")
      *
      * @Method({"POST", "GET"})
      */
