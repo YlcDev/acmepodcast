@@ -1,22 +1,28 @@
-<img src="image here">
 
-<div class="subscribe">
-    <h3>Subscribe data here</h3>
-</div>
+    <div>
+        <img src="image here">
+    </div>
 
-<nav>
-    <ul>
-        <li>
-            <a href="{{ path('home') }}">Home</a>
-        </li>
-    </ul>
-</nav>
+    <div class="subscribe">
+        <h3>Subscribe data here</h3>
+    </div>
 
-<aside>
-    <h3>Tags</h3>
-    {{ render(controller(
-    'App\\Controller\\Site\\HomeController::tagForm')) }}
-    <h3>Categories</h3>
-    {{ render(controller(
-    'App\\Controller\\Site\\HomeController::categoryForm')) }}
-</aside>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ path('home') }}">Home</a>
+            </li>
+        </ul>
+    </nav>
+    <div>
+        <h3>Tags</h3>
+        {{ render(controller(
+        'App\\Controller\\Site\\HomeController::tagForm')) }}
+    </div>
+    <div>
+        <h3>Categories</h3>
+        {{ render(controller(
+        'App\\Controller\\Site\\HomeController::categoryForm')) }}
+
+    </div>
+

@@ -1,19 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% include 'site/partials/sidebar.html.twig' %}
+    <div class="container">
+    <div class="columns">
+        <div class="column">
+            <aside>
+                {% include 'site/partials/sidebar.html.twig' %}
+            </aside>
+        </div>
+        <div class="column is-two-thirds">
+            <section>
+                {% for episode in episodes %}
+                    <article>
+                        <h3>{{ episode.title }}</h3>
+                        <p>{{ episode.description }}</p>
+                        <audio controls>
+                            <source src="{{ episode.mediaFileUrl }}" type="audio/mpeg">
+                            Your browser does not support the audio tag.
+                        </audio>
+                    </article>
+                {% else %}
+                    <p>No episodes yet exist :(, please check back later</p>
+                {% endfor %}
+            </section>
 
-    {% for episode in episodes %}
-        <article>
-            <h3>{{ episode.title }}</h3>
-            <p>{{ episode.description }}</p>
-            <audio controls>
-                <source src="{{ episode.mediaFileUrl }}" type="audio/mpeg">
-                Your browser does not support the audio tag.
-            </audio>
-        </article>
-        <hr />
-    {% else %}
-        <p>No episodes yet exist :(, please check back later</p>
-    {% endfor %}
+        </div>
+    </div>
 {% endblock %}

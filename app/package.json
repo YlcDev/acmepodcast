@@ -11,8 +11,8 @@
         "build": "encore production"
     },
     "dependencies": {
+        "bulma": "^0.6.1",
         "node-sass": "^4.7.2",
-        "picnic": "^6.4.0",
         "sass-loader": "^6.0.6"
     }
 }
