@@ -1,6 +1,7 @@
 html {
   height: 100%;
 }
+
 body {
   position: relative;
   margin: 0;
@@ -11,8 +12,6 @@ header {
     margin: 0 auto;
     width: 600px;
     padding-bottom: 1em;
-
-
 }
 
 section {
@@ -21,13 +20,10 @@ section {
     padding-bottom: 6em;
 }
 
-
-
 footer {
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
-  width:100%;
+  width: 100%;
 }
-

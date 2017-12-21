@@ -4,7 +4,9 @@
             <img src="{{ episode.image }}" class="episode-image">
         </div>
         <div class="part episode-image-info">
-            <p class="download-link">{{ episode.publishedDate|date('d-m-Y') }}</p>
+            <p class="download-link">
+                {{ episode.publishedDate|date('d-m-Y') }}
+            </p>
             <h3>
                 {{ episode.title }}
             </h3>
@@ -13,16 +15,16 @@
             </p>
             {% if loop.first %}
                 <audio controls>
-                    <source src="{{ episode.mediaFileUrl }}"
-                            type="audio/mpeg"
-                    >
+                    <source src="{{ episode.mediaFileUrl }}" type="audio/mpeg">
                     Your browser does not support the audio tag.
                 </audio>
             {% endif %}
-
-            <p><a href="{{ episode.mediaFileUrl }}" class="download-link">Download</a></p>
+            <p>
+                <a href="{{ episode.mediaFileUrl }}" class="download-link">
+                    Download
+                </a>
+            </p>
         </div>
-
     </article>
 {% else %}
     <p>

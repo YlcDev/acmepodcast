@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <header>
-            {{ render(controller('App\\Controller\\Site\\HomeController::header'))}}
-        </header>
+        {{ render(controller('App\\Controller\\Site\\HomeController::header'))}}
+    </header>
 
-
-        <section>
-            {{ render(controller('App\\Controller\\Site\\HomeController::episodes'))}}
-        </section>
-
+    <section>
+        {{ render(controller('App\\Controller\\Site\\HomeController::episodes'))}}
+    </section>
 
     <footer>
         {{ render(controller('App\\Controller\\Site\\HomeController::footer'))}}
