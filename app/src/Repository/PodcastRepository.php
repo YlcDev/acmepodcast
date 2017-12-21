@@ -21,4 +21,9 @@ class PodcastRepository extends ServiceEntityRepository
 
         $this->_em->flush();
     }
+
+    public function get() : Podcast
+    {
+        return $this->find(1);
+    }
 }

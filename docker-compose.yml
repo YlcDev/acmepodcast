@@ -1,17 +1,21 @@
 version: '2'
 services:
   server:
-    build: build/nginx
+    build:
+        context: .
+        dockerfile: build/nginx/Dockerfile
     ports:
      - "3030:80"
     volumes:
-     - ./app:/var/www/html
+     - .:/var/www/html
     networks:
      - acmepodcast
   fpm:
-    build: build/fpm
+    build:
+        context: .
+        dockerfile: build/fpm/Dockerfile
     volumes:
-     - ./app:/var/www/html
+     - .:/var/www/html
     networks:
      - acmepodcast
   db:

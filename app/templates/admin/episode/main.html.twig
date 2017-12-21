@@ -2,8 +2,21 @@
 
 {% block body %}
     {% for episode in episodes %}
-        <li>{{  episode.title }} <a href="{{ path('episode.create', {'episodeId': episode.id}) }}">Edit</a></li>
+        <li>
+            {{  episode.title }}
+            <a href="{{ path('episode.create', {'episodeId': episode.id}) }}">
+                Edit
+            </a>
+        </li>
     {% else %}
-        <li><em>no episodes exist. <a href="{{ path('episode.create') }}">Click here</a> to add your first episode :)</em></li>
+        <li>
+            <em>
+                no episodes exist.
+                <a href="{{ path('episode.create') }}">
+                    Click here
+                </a>
+                to add your first episode :)
+            </em>
+        </li>
     {% endfor %}
 {% endblock %}

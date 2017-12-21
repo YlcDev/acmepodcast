@@ -5,6 +5,7 @@ namespace App\Controller\Site;
 
 use App\Repository\CategoryRepository;
 use App\Repository\EpisodeRepository;
+use App\Repository\PodcastRepository;
 use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,13 +23,25 @@ class HomeController extends AbstractController
         return $this->render('site/home/main.html.twig', ['episodes' => $episodes]);
     }
 
-    public function tagForm(TagRepository $repository)
+    public function header(PodcastRepository $repository)
     {
-        return new Response("Tag form here");
+        $podcast = $repository->get();
+
+        return $this->render('site/parts/header.html.twig', ['podcast' => $podcast]);
+
     }
 
-    public function categoryForm(CategoryRepository $repository)
+    public function episodes(EpisodeRepository $repository)
     {
-        return new Response("Category form here");
+        $episodes = $repository->findAll();
+
+        return $this->render('site/parts/episodes.html.twig', ['episodes' => $episodes]);
+    }
+
+    public function footer(PodcastRepository $repository)
+    {
+        $podcast = $repository->get();
+
+        return $this->render('site/parts/footer.html.twig', ['podcast' => $podcast]);
     }
 }

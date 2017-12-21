@@ -63,6 +63,29 @@ class Podcast
     private $language;
 
     /**
+     * @Assert\Url(
+     *    dnsMessage = "The host '{{ value }}' could not be resolved."
+     * )
+     *
+     * @ORM\Column(type="string")
+     */
+    private $image;
+
+    /**
+     * @Assert\NotBlank()
+     *
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 50,
+     *      minMessage = "The title must be at least {{ limit }} characters long",
+     *      maxMessage = "The title cannot be longer than {{ limit }} characters"
+     * )
+     *
+     * @ORM\Column(type="string")
+     */
+    private $author;
+
+    /**
      * @ORM\OneToMany(targetEntity="Episode", mappedBy="podcast")
      */
     private $episodes;
@@ -166,5 +189,41 @@ class Podcast
     public function setLink($link)
     {
         $this->link = $link;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
     }
 }

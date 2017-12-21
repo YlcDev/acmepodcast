@@ -2,8 +2,19 @@
 
 {% block body %}
     {% for tag in tags %}
-        <li>{{  tag.title }} <a href="{{ path('tag.create', {'tagId': tag.id}) }}">Edit</a></li>
+        <li>
+            {{  tag.title }}
+            <a href="{{ path('tag.create', {'tagId': tag.id}) }}">
+                Edit
+            </a>
+        </li>
     {% else %}
-        <li><em>no tags exist. <a href="{{ path('tag.create') }}">Click here</a> to add your first tag :)</em></li>
+        <li>
+            <em>
+                no tags exist.
+                <a href="{{ path('tag.create') }}">
+                    Click here</a> to add your first tag :)
+            </em>
+        </li>
     {% endfor %}
 {% endblock %}

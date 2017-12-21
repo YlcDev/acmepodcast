@@ -1,0 +1,31 @@
+{% for episode in episodes %}
+    <article>
+        <div class="part episode-image-container">
+            <img src="{{ episode.image }}" class="episode-image">
+        </div>
+        <div class="part episode-image-info">
+            <p class="download-link">{{ episode.publishedDate|date('d-m-Y') }}</p>
+            <h3>
+                {{ episode.title }}
+            </h3>
+            <p class="episode-description">
+                {{ episode.description }}
+            </p>
+            {% if loop.first %}
+                <audio controls>
+                    <source src="{{ episode.mediaFileUrl }}"
+                            type="audio/mpeg"
+                    >
+                    Your browser does not support the audio tag.
+                </audio>
+            {% endif %}
+
+            <p><a href="{{ episode.mediaFileUrl }}" class="download-link">Download</a></p>
+        </div>
+
+    </article>
+{% else %}
+    <p>
+        No episodes yet exist :(, please check back later
+    </p>
+{% endfor %}

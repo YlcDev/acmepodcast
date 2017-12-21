@@ -25,8 +25,10 @@ class PodcastType extends AbstractType
         $builder
             ->setAction($this->router->generate('podcast'))
             ->add('title')
+            ->add('author')
             ->add('description')
             ->add('link')
+            ->add('image')
             ->add('language')
             ->add('Save', SubmitType::class)
         ;

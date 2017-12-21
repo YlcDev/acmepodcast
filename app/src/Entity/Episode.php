@@ -66,6 +66,22 @@ class Episode
     private $link;
 
     /**
+     * @Assert\NotBlank()
+     *
+     * @ORM\Column(type="string")
+     */
+    private $image;
+
+    /**
+     * @Assert\NotBlank()
+     *
+     * @Assert\Date()
+     *
+     * @ORM\Column(type="date")
+     */
+    private $publishedDate;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Podcast")
      * @ORM\JoinColumn(name="podcast_id", referencedColumnName="id")
      */
@@ -107,6 +123,8 @@ class Episode
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -123,6 +141,8 @@ class Episode
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -155,6 +175,8 @@ class Episode
     public function setLink($link)
     {
         $this->link = $link;
+
+        return $this;
     }
 
     /**
@@ -171,6 +193,8 @@ class Episode
     public function setPodcast($podcast)
     {
         $this->podcast = $podcast;
+
+        return $this;
     }
 
     /**
@@ -203,5 +227,43 @@ class Episode
     public function setMediaFileUrl($mediaFileUrl)
     {
         $this->mediaFileUrl = $mediaFileUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublishedDate()
+    {
+        return $this->publishedDate;
+    }
+
+    /**
+     * @param mixed $publishedDate
+     */
+    public function setPublishedDate($publishedDate)
+    {
+        $this->publishedDate = $publishedDate;
+
+        return $this;
     }
 }
