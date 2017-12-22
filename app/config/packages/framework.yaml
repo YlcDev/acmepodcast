@@ -1,16 +1,30 @@
 framework:
     secret: '%env(APP_SECRET)%'
+    translator: ~
     #default_locale: en
-    #csrf_protection: ~
+    csrf_protection: ~
     #http_method_override: true
     #trusted_hosts: ~
 
     # uncomment this entire section to enable sessions
-    #session:
+    session:
     #    # With this config, PHP's native session handling is used
-    #    handler_id: ~
+        handler_id: ~
 
     #esi: ~
     #fragments: ~
     php_errors:
         log: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: App\Entity\User
+    registration:
+        confirmation:
+            enabled: true
+    from_email:
+        address: '%env(MAILER_USER_ADDRESS)%'
+        sender_name: '%env(MAILER_USER_NAME)%'
+    service:
+        mailer: fos_user.mailer.twig_swift
