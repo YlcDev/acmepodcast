@@ -34,4 +34,15 @@ class EpisodeRepository extends ServiceEntityRepository
 
         $this->_em->flush();
     }
+
+    public function findByLink(?string $episodeLink = null)
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('episode')
+            ->from(Episode::class, 'episode')
+            ->where('episode.link = :link')
+            ->setParameter('link', $episodeLink)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

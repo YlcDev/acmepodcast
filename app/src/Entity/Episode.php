@@ -172,8 +172,12 @@ class Episode
     /**
      * @param mixed $link
      */
-    public function setLink($link)
+    public function setLink($link = null)
     {
+        if (is_null($link)) {
+            $link = uniqid();
+        }
+
         $this->link = $link;
 
         return $this;

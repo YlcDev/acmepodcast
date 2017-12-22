@@ -39,7 +39,7 @@ class EpisodeFixtures extends Fixture
             $episode = new Episode();
 
             $episode->setPodcast($podcast)
-                ->setLink($faker->url)
+                ->setLink()
                 ->setDescription($faker->text(150))
                 ->setTitle($faker->text(10))
                 ->setMediaFileUrl($faker->url)

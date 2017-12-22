@@ -9,6 +9,7 @@ use App\Repository\PodcastRepository;
 use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
@@ -31,9 +32,15 @@ class HomeController extends AbstractController
 
     }
 
-    public function episodes(EpisodeRepository $repository)
+    public function episodes(Request $request, EpisodeRepository $repository)
     {
-        $episodes = $repository->findAll();
+        $episodeLink = $request->get('episode');
+
+        if (is_null($episodeLink)) {
+            $episodes = $repository->findAll();
+        } else {
+            $episodes = $repository->findByLink($episodeLink);
+        }
 
         return $this->render('site/parts/episodes.html.twig', ['episodes' => $episodes]);
     }

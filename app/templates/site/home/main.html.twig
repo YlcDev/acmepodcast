@@ -5,7 +5,7 @@
     </header>
 
     <section>
-        {{ render(controller('App\\Controller\\Site\\HomeController::episodes'))}}
+        {{ render(controller('App\\Controller\\Site\\HomeController::episodes', {episode: app.request.query.get('episode')}))}}
     </section>
 
     <footer>

@@ -8,7 +8,7 @@
                 {{ episode.publishedDate|date('d-m-Y') }}
             </p>
             <h3>
-                {{ episode.title }}
+                <a href="?episode={{ episode.link }}" class="episode-link">{{ episode.title }}</a>
             </h3>
             <p class="episode-description">
                 {{ episode.description }}
