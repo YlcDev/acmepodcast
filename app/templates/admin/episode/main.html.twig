@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="main">
     {% include 'admin/_parts/sidebar.html.twig' %}
 
 
+    <main>
+    <table>
+        <th>Title</th>
+        <th>Link</th>
+        <th>Published Date</th>
     {% for episode in episodes %}
-        <li>
-            {{  episode.title }}
-            <a href="{{ path('episode.create', {'episodeId': episode.id}) }}">
-                Edit
-            </a>
-        </li>
+        <tr>
+            <td><a href="{{ path('episode.create', {'episodeId': episode.id}) }}">{{  episode.title }}</a></td>
+            <td><a href="{{ path('episode.create', {'episodeId': episode.id}) }}"> {{  episode.link }}</a></td>
+            <td><a href="{{ path('episode.create', {'episodeId': episode.id}) }}">{{ episode.publishedDate|date('d-m-Y') }}</a></td>
+        </tr>
     {% else %}
         <li>
             <em>
@@ -22,4 +27,7 @@
             </em>
         </li>
     {% endfor %}
+    </table>
+    </main>
+    </div>
 {% endblock %}
