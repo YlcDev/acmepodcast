@@ -24,6 +24,7 @@ class EpisodeController extends Controller
 
     /**
      * @Route("/admin/episodes", name="episode")
+     * @Route("/admin", name="admin")
      *
      * @Method({"GET"})
      */

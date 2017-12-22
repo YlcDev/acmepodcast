@@ -13,16 +13,17 @@ class SettingRepository extends ServiceEntityRepository
         parent::__construct($registry, Setting::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function get()
     {
-        return $this->createQueryBuilder('s')
-            ->where('s.something = :value')->setParameter('value', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->find(1);
     }
-    */
+
+    public function update($entity)
+    {
+        $entity = $this->_em->merge($entity);
+
+        $this->_em->persist($entity);
+
+        $this->_em->flush();
+    }
 }

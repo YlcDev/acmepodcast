@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SettingRepository")
@@ -17,44 +18,93 @@ class Setting
     private $id;
 
     /**
-     * @ORM\Column(length=10)
+     * @Assert\Url(
+     *    dnsMessage = "The host '{{ value }}' could not be resolved."
+     * )
+     *
+     * @ORM\Column(type="string")
      */
-    private $key;
+    private $facebook;
 
     /**
-     * @ORM\Column(length=100)
+     * @Assert\Url(
+     *    dnsMessage = "The host '{{ value }}' could not be resolved."
+     * )
+     *
+     * @ORM\Column(type="string")
      */
-    private $value;
+    private $twitter;
+
+    /**
+     * @Assert\Url(
+     *    dnsMessage = "The host '{{ value }}' could not be resolved."
+     * )
+     *
+     * @ORM\Column(type="string")
+     */
+    private $iTunes;
 
     /**
      * @return mixed
      */
-    public function getKey()
+    public function getId()
     {
-        return $this->key;
+        return $this->id;
     }
 
     /**
-     * @param mixed $key
+     * @param mixed $id
      */
-    public function setKey($key)
+    public function setId($id)
     {
-        $this->key = $key;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getValue()
+    public function getFacebook()
     {
-        return $this->value;
+        return $this->facebook;
     }
 
     /**
-     * @param mixed $value
+     * @param mixed $facebook
      */
-    public function setValue($value)
+    public function setFacebook($facebook)
     {
-        $this->value = $value;
+        $this->facebook = $facebook;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * @param mixed $twitter
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getITunes()
+    {
+        return $this->iTunes;
+    }
+
+    /**
+     * @param mixed $iTunes
+     */
+    public function setITunes($iTunes)
+    {
+        $this->iTunes = $iTunes;
     }
 }

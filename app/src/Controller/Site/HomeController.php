@@ -6,6 +6,7 @@ namespace App\Controller\Site;
 use App\Repository\CategoryRepository;
 use App\Repository\EpisodeRepository;
 use App\Repository\PodcastRepository;
+use App\Repository\SettingRepository;
 use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,5 +51,12 @@ class HomeController extends AbstractController
         $podcast = $repository->get();
 
         return $this->render('site/parts/footer.html.twig', ['podcast' => $podcast]);
+    }
+
+    public function subscribe(SettingRepository $repository)
+    {
+        $settings = $repository->get();
+
+        return $this->render('site/parts/subscribe.html.twig', ['settings' => $settings]);
     }
 }

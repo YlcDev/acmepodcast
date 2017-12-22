@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% include 'admin/_parts/sidebar.html.twig' %}
+
+
     {% for category in categories %}
         <li>
             {{  category.title }}

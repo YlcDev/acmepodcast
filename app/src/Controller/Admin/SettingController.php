@@ -2,18 +2,31 @@
 
 namespace App\Controller\Admin;
 
+use App\Form\SettingType;
+use App\Repository\SettingRepository;
+use App\Service\SettingService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class SettingController extends AbstractController
 {
     /**
-     * @Route("/setting", name="setting")
+     * @Route("/admin/settings", name="settings")
      */
-    public function index()
+    public function index(Request $request, SettingRepository $repository)
     {
-        // replace this line with your own code!
-        return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
+        $settings = $repository->get();
+
+        $form = $this->createForm(SettingType::class, $settings);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->update($settings);
+        }
+
+        return $this->render('admin/setting/main.html.twig', ['form' => $form->createView() ]);
     }
 }

@@ -8,13 +8,13 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20171203012343 extends AbstractMigration
+class Version20171222101840 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('INSERT INTO podcast (title, description, link, language) VALUES("The Artisan Podcast", "This is an example podcast build with acmepodcast, this is your description, make sure you use searchable terms as people need to find your podcast :)", "http://typethelinkhere.com", "en")');
+        $this->addSql('INSERT INTO setting (facebook, twitter, i_tunes) VALUES("http://facebook.com/exampleuser", "http://twitter.com/exampleuser", "http://itunes.com/somelink")');
     }
 
     public function down(Schema $schema)

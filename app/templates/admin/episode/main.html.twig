@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% include 'admin/_parts/sidebar.html.twig' %}
+
+
     {% for episode in episodes %}
         <li>
             {{  episode.title }}

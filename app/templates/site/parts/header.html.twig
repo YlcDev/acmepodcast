@@ -5,26 +5,7 @@
         {{ podcast.title }}
     </h1>
     <div class="subscribe">
-        <li class="link-list-item">
-            <a href="/podcast" class="icon">
-                <i class="fa fa-podcast fa-3" aria-hidden="true"></i>
-            </a>
-        </li>
-        <li class="link-list-item">
-            <a href="/rss" class="icon">
-                <i class="fa fa-rss fa-3" aria-hidden="true"></i>
-            </a>
-        </li>
-        <li class="link-list-item" class="icon">
-            <a href="/twitter">
-                <i class="fa fa-twitter fa-3" aria-hidden="true"></i>
-            </a>
-        </li>
-        <li class="link-list-item">
-            <a href="/facebook" class="icon">
-                <i class="fa fa-facebook fa-3" aria-hidden="true"></i>
-            </a>
-        </li>
+        {{ render(controller('App\\Controller\\Site\\HomeController::subscribe'))}}
     </div>
     <div class="description">
         <p>{{ podcast.description }}</p>
