@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -51,6 +52,11 @@ class Category
      */
     private $episodes;
 
+    public function __construct()
+    {
+        $this->episodes = new ArrayCollection();
+    }
+
     /**
      * @return mixed
      */
@@ -97,5 +103,20 @@ class Category
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    public function getEpisodes()
+    {
+        return $this->episodes;
+    }
+
+    public function setEpisodes($episodes)
+    {
+        $this->episodes = $episodes;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }
