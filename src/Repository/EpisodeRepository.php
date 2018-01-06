@@ -45,4 +45,14 @@ class EpisodeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getArrayResult();
     }
+
+    public function getAll()
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('episode')
+            ->from(Episode::class, 'episode')
+            ->orderBy('episode.publishedDate', 'DESC')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

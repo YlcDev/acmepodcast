@@ -38,7 +38,7 @@ class HomeController extends AbstractController
         $episodeLink = $request->get('episode');
 
         if (is_null($episodeLink)) {
-            $episodes = $repository->findAll();
+            $episodes = $repository->getAll();
         } else {
             $episodes = $repository->findByLink($episodeLink);
         }
