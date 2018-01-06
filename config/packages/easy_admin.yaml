@@ -6,7 +6,7 @@ easy_admin:
          - { name: 'delete', icon: 'remove', label: '' }
          - { name: 'search', icon: 'search', label: '' }
    design:
-      color_scheme: 'light'
+      color_scheme: 'dark'
       brand_color: 'salmon'
       menu:
          - { entity: 'Episode', label: 'Episodes' }
