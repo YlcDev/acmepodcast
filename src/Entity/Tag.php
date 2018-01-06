@@ -47,6 +47,10 @@ class Tag
     private $description;
 
     /**
+     * @ORM\OneToMany(targetEntity="Episode", mappedBy="tag")
+     */
+    private $episodes;
+    /**
      * @return mixed
      */
     public function getId()
@@ -92,6 +96,22 @@ class Tag
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEpisodes()
+    {
+        return $this->episodes;
+    }
+
+    /**
+     * @param mixed $episodes
+     */
+    public function setEpisodes($episodes)
+    {
+        $this->episodes = $episodes;
     }
 
 }

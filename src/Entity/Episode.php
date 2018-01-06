@@ -94,6 +94,12 @@ class Episode
     private $category;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Tag")
+     * @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     */
+    private $tag;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -274,5 +280,21 @@ class Episode
     public function __toString()
     {
         return $this->getTitle();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param mixed $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
     }
 }
