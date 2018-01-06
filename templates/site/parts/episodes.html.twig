@@ -1,0 +1,41 @@
+{% for episode in episodes %}
+    <div class="container episode-card">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{{ episode.image }}" class="episode-img">
+            </div>
+            <div class="col-sm-8 episode-info">
+                <h5 class="mt-2">
+                    <a href="?episode={{ episode.link }}" class="episode-link">
+                        {{ episode.title }}
+                    </a>
+                </h5>
+                <p class="episode-description">
+                    {{ episode.description }}
+                </p>
+
+                {% if loop.first %}
+                    <audio controls>
+                        <source src="{{ episode.mediaFileUrl }}" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                    </audio>
+                {% endif %}
+                <p>
+                    <a href="{{ episode.mediaFileUrl }}" class="download-link">
+                        Download
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="container episode-card">
+        <div class="row">
+            <div class="col episode-info">
+                <p class="episode-description">
+                    Currently there are not episodes :(, Please add them via the admin panel.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endfor %}

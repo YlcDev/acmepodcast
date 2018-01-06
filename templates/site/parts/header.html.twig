@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="header">
+        <div class="header-title-description">
+        <h1>
+            {{ podcast.title }}
+        </h1>
+        <small>
+            <i>
+                By {{ podcast.author }}
+            </i>
+        </small>
+        </div>
+        <div class="subscribe">
+            {{ render(controller('App\\Controller\\Site\\HomeController::subscribe'))}}
+    </div>
+    <div class="description">
+        <p>{{ podcast.description }}</p>
+    </div>
+    </header>
+{% endblock %}

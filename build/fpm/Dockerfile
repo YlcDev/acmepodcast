@@ -10,7 +10,7 @@ RUN docker-php-ext-install pdo_mysql
 RUN pecl install xdebug-2.5.0 \
     && docker-php-ext-enable xdebug  
 
-WORKDIR /var/www/html/app
+WORKDIR /var/www/html
 
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 RUN composer install -vvv

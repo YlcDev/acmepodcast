@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+        <div class="container">
+            {{ render(controller('App\\Controller\\Site\\HomeController::header'))}}
+
+            {{ render(controller('App\\Controller\\Site\\HomeController::episodes', {episode: app.request.query.get('episode')}))}}
+        </div>
+{% endblock %}

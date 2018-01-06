@@ -1,35 +1,47 @@
 # AcmePodcast
 
-Write a descrition about acmepodcast here.
+A no-nonsense, simple website for your podcast that provides an RSS feed which you can add to various podcast catching services such as iTunes.
 
 ### Prerequisites
 
-requirements will be written here
+* docker-compose (https://docs.docker.com/compose/install/)
+* ssh access to the server you wish to install this application on.
 
 ### Installing
 
-installation instructions
+First, build and run the containers using the below commands
 
-### Link to further details
+`$ docker-compose up`
 
-## Deployment
+Then run the database migrations
 
-Add additional notes about how to deploy this on a live system
+`$ docker exec -it acmepodcast_fpm_1 bash`
+`$ php bin/console doctrine:database:create`
+`$ php bin/console doctrine:migrations:migrate`
+`$ php bin/console fos:user:create # answer all three questions` 
+
 
 ## Running the tests
 
-explanations on how to run the test
+`$ docker exec -it acmepodcast_fpm_1 bash`
+
+`$ php vendor/bin/phpunit`
 
 ## Built With
 
-mentions stack and dep and lib used
+* docker
+* docker-compose
+* php7.1
+* sqlite3
+* symfony4
+* easy_admin
+* fos_bundle
+* bootstrap
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Currently using [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/rossboswell/acmepodcast/tags). 
 
 ## License
 
 Haven't decided yet
-
-## Acknowledgments

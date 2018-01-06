@@ -1,0 +1,58 @@
+easy_admin:
+   site_name: 'Acme Podcast'
+   list:
+      actions:
+         - { name: 'edit', icon: 'pencil', label: '' }
+         - { name: 'delete', icon: 'remove', label: '' }
+         - { name: 'search', icon: 'search', label: '' }
+   design:
+      color_scheme: 'light'
+      brand_color: 'salmon'
+      menu:
+         - { entity: 'Episode', label: 'Episodes' }
+         - { entity: 'Category', label: 'Categories' }
+         - { entity: 'Tag', label: 'Tags' }
+         - { entity: 'Podcast', label: 'Podcast Details',  params: { action: 'edit', id: 1 } }
+         - { entity: 'Setting',label: 'Settings',  params: { action: 'edit', id: 1 } }
+
+   entities:
+      Episode:
+         class: App\Entity\Episode
+         list:
+            fields:
+               - 'title'
+               - 'description'
+               - 'link'
+               - 'image'
+               - { property: 'publishedDate', type: 'datetime' }
+         edit:
+            fields:
+               - 'title'
+               - 'description'
+               - 'link'
+               - 'image'
+               - 'category'
+               - 'mediaFileUrl'
+               - { property: 'publishedDate', type: 'datetime' }
+      Podcast:
+         class: App\Entity\Podcast
+         list:
+            actions: ['-search', '-new', '-delete']
+            fields: ['title', 'author', 'description']
+         edit:
+            actions: ['-delete', '-list']
+      Category:
+         class: App\Entity\Category
+         list:
+            fields: ['title', 'description', 'episodes']
+      Setting:
+         class: App\Entity\Setting
+         list:
+            actions: ['-search', '-new', '-delete' ]
+            fields: ['facebook', 'twitter', 'Itunes']
+         edit:
+            actions: ['-delete', '-list']
+      Tag:
+         class: App\Entity\Tag
+         list:
+            fields: ['title', 'description']
