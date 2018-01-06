@@ -34,6 +34,15 @@ easy_admin:
                - 'category'
                - 'mediaFileUrl'
                - { property: 'publishedDate', type: 'datetime' }
+         new:
+            fields:
+               - 'title'
+               - 'description'
+               - 'link'
+               - 'image'
+               - 'category'
+               - 'mediaFileUrl'
+               - { property: 'publishedDate', type: 'datetime' }
       Podcast:
          class: App\Entity\Podcast
          list:

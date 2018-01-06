@@ -77,7 +77,7 @@ class Episode
      *
      * @Assert\Date()
      *
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $publishedDate;
 
