@@ -32,6 +32,7 @@ easy_admin:
                - 'link'
                - 'image'
                - 'category'
+               - 'tag'
                - 'mediaFileUrl'
                - { property: 'publishedDate', type: 'datetime' }
          new:
@@ -41,6 +42,7 @@ easy_admin:
                - 'link'
                - 'image'
                - 'category'
+               - 'tag'
                - 'mediaFileUrl'
                - { property: 'publishedDate', type: 'datetime' }
       Podcast:
@@ -54,6 +56,10 @@ easy_admin:
          class: App\Entity\Category
          list:
             fields: ['title', 'description', 'episodes']
+         new:
+            fields: ['title', 'description']
+         edit:
+            fields: ['title', 'description']
       Setting:
          class: App\Entity\Setting
          list:
@@ -64,4 +70,8 @@ easy_admin:
       Tag:
          class: App\Entity\Tag
          list:
+            fields: ['title', 'description', 'episodes']
+         new:
+            fields: ['title', 'description']
+         edit:
             fields: ['title', 'description']
