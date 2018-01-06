@@ -2,6 +2,7 @@
 
 namespace App\RssCreator;
 
+use App\Repository\EpisodeRepository;
 use App\Repository\PodcastRepository;
 use FeedIo\Adapter\Guzzle\Client as ClientAdapter;
 use FeedIo\Feed;
@@ -13,10 +14,12 @@ use Psr\Log\NullLogger;
 class RssCreator
 {
     private $podcast;
+    private $episodes;
 
-    public function __construct(PodcastRepository $podcastRepository)
+    public function __construct(PodcastRepository $podcastRepository, EpisodeRepository $episodeRepository)
     {
         $this->podcast = $podcastRepository->find(1);
+        $this->episodes = $episodeRepository->getAll();
     }
 
     public function produce(string $fileExtension)
@@ -47,17 +50,17 @@ class RssCreator
 
     public function addItems(Feed $feed)
     {
-        $episodes = $this->podcast->getEpisodes();
+        $episodes = $this->episodes;
 
         foreach ($episodes as $episode) {
             $item = $feed->newItem();
 
             $media = new Media();
-            $media->setUrl($episode->getMediaFileUrl());
+            $media->setUrl($episode['mediaFileUrl']);
 
             $item->addMedia($media);
-            $item->setTitle($episode->getTitle())
-                ->setDescription($episode->getDescription())
+            $item->setTitle($episode['title'])
+                ->setDescription($episode['description'])
             ;
 
             $feed->add($item);
